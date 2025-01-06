@@ -5,21 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Website</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Marquee Styling */
+        .marquee {
+            background-color: #333;
+            color: white;
+            font-size: 2em;
+            padding: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            position: relative;
+            width: 100vw; /* Ensure it covers the full width of the viewport */
+        }
+
+        .marquee p {
+            animation: scroll 15s linear infinite;
+            margin: 0;
+            display: inline-block;
+            padding-right: 100%; /* To give some space for the text to scroll smoothly */
+        }
+
+        /* Keyframes to move text from right to left */
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%); /* Start off-screen on the right */
+            }
+            100% {
+                transform: translateX(-100%); /* Move off-screen to the left */
+            }
+        }
+
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        /* Styling for active link */
+        header nav ul li a.active {
+            color: #ffcc00; /* Highlight color */
+            font-weight: bold;
+        }
+
+        #intro {
+            text-align: center;
+            padding: 40px;
+        }
+
+        #intro h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        #intro p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 900px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="bio.html">Bio</a></li>
+                <li><a href="index.html" onclick="setActiveLink(this)">Home</a></li>
+                <li><a href="resume.html" onclick="setActiveLink(this)">Resume</a></li>
+                <li><a href="bio.html" onclick="setActiveLink(this)">Bio</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Marquee Section -->
+    <div class="marquee">
+        <p>Welcome!</p>
+    </div>
+
     <section id="intro">
-        <h1>Welcome to My Personal Website</h1>
-        <p>Learn more about my skills, experience, and background.</p>
+        <h1>"Where Innovation Meets Passion"</h1>
+      
+        <p>I am thrilled that you have stopped by! This is the place where you can learn more about who I am, the skills I have developed, and the journey I have taken as a developer and a content creator.</p>
+
+        <p>Explore my work, discover my passions, and get a deeper insight into the technologies that fuel my creativity. Whether you are here to collaborate, learn, or just take a look at what I have been up to, I hope you find something that sparks your interest.</p>
+
+        <p>Feel free to explore the sections on my background, projects, and hobbies to see what drives me and what I am currently working on. Thanks for visiting — I look forward to connecting with you!</p>
     </section>
 
     <footer>
@@ -27,5 +135,17 @@
     </footer>
 
     <script src="scripts.js"></script>
+    <script>
+        function setActiveLink(link) {
+            // Remove the 'active' class from all links
+            const links = document.querySelectorAll('header nav ul li a');
+            links.forEach((link) => {
+                link.classList.remove('active');
+            });
+
+            // Add the 'active' class to the clicked link
+            link.classList.add('active');
+        }
+    </script>
 </body>
 </html>
